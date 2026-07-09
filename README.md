@@ -2,7 +2,7 @@
 
 **Mathematician and technical communicator working across software correctness, system validation, scientific computing, and technical documentation.**
 
-[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · Montréal, Canada
+[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · [Research papers](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T) · Montréal, Canada
 
 I have a PhD in mathematics and a professional background spanning mathematical research, scientific review, university teaching, applied cryptography, and technical writing.
 
@@ -21,6 +21,18 @@ The projects below range from interactive-proof protocols and computational numb
 **Making advanced interactive-proof protocols executable and teachable.**
 
 How can someone verify that a large computation was performed correctly without repeating the entire computation? The sum-check protocol and the Goldwasser–Kalai–Rothblum (GKR) protocol, which builds on it, are foundational tools for addressing that problem.
+
+<p align="center">
+  <a href="https://github.com/tmfreiberg/sumcheck-gkr-notes">
+    <img
+      src="assets/sumcheck.gif"
+      alt="Interactive sum-check protocol demonstration showing a prover–verifier exchange"
+      width="500"
+    >
+  </a>
+  <br>
+  <em>An interactive prover–verifier exchange making the mechanics of the sum-check protocol visible.</em>
+</p>
 
 This project turns their mathematics into interactive Python notebooks and concrete prover–verifier exchanges. It covers finite-field arithmetic, multilinear extensions, arithmetic circuits, soundness, and the layer-by-layer structure of GKR, with circuit visualizations and role-based transcripts that expose the mechanism of each protocol rather than treating it as a black box.
 
@@ -131,6 +143,23 @@ I therefore reframed the project around a more defensible question. Instead of p
 That pivot is the most important feature of the project: the purpose of analysis is not to force a model into a predetermined use case, but to understand what the available data can—and cannot—honestly support.
 
 **Focus:** public-data engineering, XGBoost, model evaluation, asymmetric error costs, bilingual documentation, retrospective analysis, analytical judgment
+
+## Research publications
+
+Before moving into applied technical work, I spent eight years as a research mathematician in analytic and probabilistic number theory. I published **12 peer-reviewed journal papers and two expository articles**, working both independently and with collaborators across several institutions.
+
+The research falls into three broad strands:
+
+* **Prime distributions and rare events:** gaps between consecutive primes, primes in short intervals, and probabilistic models for arithmetic data. This includes joint work with William Banks and James Maynard published in the *Proceedings of the London Mathematical Society*.
+* **Arithmetic statistics and cryptographic mathematics:** the group structure of elliptic curves over finite fields, perfect-power values, square totients, and Carmichael numbers. I coauthored *A Note on Square Totients*, published in the *International Journal of Number Theory*, with Carl Pomerance; I was fortunate to learn from the collaboration, which also gives me an Erdős number of 2.
+* **Number theory and mathematical physics:** Poisson statistics for sums of two squares and their application to spectral spacings in a model from quantum chaos.
+
+Joint work with William Banks and James Maynard on normalized prime gaps, and its extension by Jori Merikoski, was discussed by K. Soundararajan in his presentation of Maynard's research at the 2022 Fields Medal ceremony. Soundararajan used the extended result to explain the striking consequence that at least one of $e$, $\pi$, or $\pi-e$ must be a limit point of normalized consecutive prime gaps. [Watch the relevant excerpt](https://youtu.be/EXRBpsU-khk?si=8QWDlvmQQe6gi2Gt&t=4902).
+
+
+These papers are evidence not only of mathematical research but of sustained technical writing: constructing and revising long rigorous arguments, collaborating with coauthors, responding to specialist peer review, and presenting difficult results for publication.
+
+[Read the papers and preprints on arXiv](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T)
 
 ## The common thread
 

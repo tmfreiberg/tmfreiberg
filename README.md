@@ -18,6 +18,8 @@ The projects below range from interactive-proof protocols and computational numb
 
 ### [Sum-check and GKR](https://github.com/tmfreiberg/sumcheck-gkr-notes)
 
+[#sum-check-and-gkr](#sum-check-and-gkr)
+
 **Making advanced interactive-proof protocols executable and teachable.**
 
 How can someone verify that a large computation was performed correctly without repeating the entire computation? The sum-check protocol and the Goldwasser–Kalai–Rothblum (GKR) protocol, which builds on it, are foundational tools for addressing that problem.
@@ -34,11 +36,11 @@ How can someone verify that a large computation was performed correctly without 
   <em>An interactive prover–verifier exchange making the mechanics of the sum-check protocol visible.</em>
 </p>
 
-This project turns their mathematics into interactive Python notebooks and concrete prover–verifier exchanges. It covers finite-field arithmetic, multilinear extensions, arithmetic circuits, soundness, and the layer-by-layer structure of GKR, with circuit visualizations and role-based transcripts that expose the mechanism of each protocol rather than treating it as a black box.
+This project turns their mathematics into a **[fully rendered, interactive book](https://tmfreiberg.github.io/sumcheck-gkr-notes)** and concrete prover–verifier exchanges. It covers finite-field arithmetic, multilinear extensions, arithmetic circuits, soundness, and the layer-by-layer structure of GKR, with circuit visualizations and role-based transcripts that expose the mechanism of each protocol rather than treating it as a black box. Every theorem is numbered and cross-linked, every worked example runs live, and the reader can play the prover, the verifier, or neither and watch each round unfold — including a dishonest prover being caught, or, over a small enough field, occasionally slipping through.
 
-The repository is organized as a modern Python package with four Jupyter notebooks, platform-specific installation guidance, editable installation, optional dependencies, and cross-environment display support. The sum-check treatment is substantially complete; the corresponding pedagogical layer for GKR remains in development. 
+The source is organized as a modern Python package with a companion command-line interface, published to the web from Markdown sources through an automated build. Following Justin Thaler's *Proofs, Arguments, and Zero-Knowledge*, the treatment supplements his presentation with additional background, complete proofs of the underlying lemmas, and executable examples. Both the sum-check and GKR protocols are covered in full, including a proof of the GKR soundness-error bound checked against a Monte Carlo simulation over a deliberately small field.
 
-**Focus:** verifiable computation, mathematical exposition, Python packaging, Jupyter, Graphviz, pedagogical software design
+**Focus:** verifiable computation, mathematical exposition, MyST / executable documents, Python packaging, CLI design, Graphviz, pedagogical software design
 
 ---
 

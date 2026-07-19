@@ -18,8 +18,6 @@ The projects below range from interactive-proof protocols and computational numb
 
 ### [Sum-check and GKR](https://github.com/tmfreiberg/sumcheck-gkr-notes)
 
-[#sum-check-and-gkr](#sum-check-and-gkr)
-
 **Making advanced interactive-proof protocols executable and teachable.**
 
 How can someone verify that a large computation was performed correctly without repeating the entire computation? The sum-check protocol and the Goldwasser–Kalai–Rothblum (GKR) protocol, which builds on it, are foundational tools for addressing that problem.

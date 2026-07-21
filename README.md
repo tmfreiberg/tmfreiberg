@@ -16,14 +16,14 @@ The projects below range from interactive-proof protocols and computational numb
 
 ## Selected projects
 
-### [Sum-check and GKR](https://github.com/tmfreiberg/sumcheck-gkr-notes)
+### [Sum-check and GKR](https://tmfreiberg.github.io/sumcheck-gkr-notes/)
 
 **Making advanced interactive-proof protocols executable and teachable.**
 
 How can someone verify that a large computation was performed correctly without repeating the entire computation? The sum-check protocol and the Goldwasser–Kalai–Rothblum (GKR) protocol, which builds on it, are foundational tools for addressing that problem.
 
 <p align="center">
-  <a href="https://github.com/tmfreiberg/sumcheck-gkr-notes">
+  <a href="https://tmfreiberg.github.io/sumcheck-gkr-notes/">
     <img
       src="assets/sumcheck.gif"
       alt="Interactive sum-check protocol demonstration showing a prover–verifier exchange"
@@ -42,14 +42,14 @@ The source is organized as a modern Python package with a companion command-line
 
 ---
 
-### [Euclid’s Algorithm Analysis](https://github.com/tmfreiberg/euclids_algorithm_analysis)
+### [Euclid’s Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
 
 **An ancient algorithm that still holds mathematical mysteries.**
 
 Euclid’s algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
 
 <p align="center">
-  <a href="https://github.com/tmfreiberg/euclids_algorithm_analysis">
+  <a href="https://tmfreiberg.github.io/euclids_algorithm_analysis/">
     <img
       src="assets/euclids_algorithm.gif"
       alt="Animated distribution of the number of steps in Euclid's algorithm"

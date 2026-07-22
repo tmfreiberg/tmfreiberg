@@ -2,9 +2,9 @@
 
 **Mathematician and technical communicator working across software correctness, system validation, scientific computing, and technical documentation.**
 
-[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · [Research papers](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T) · Montréal, Canada
+[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · [Research papers](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T) · [Mathematics Genealogy Project](https://www.genealogy.math.ndsu.nodak.edu/id.php?id=160180) · Montréal, Canada
 
-I have a PhD in mathematics and a professional background spanning mathematical research, scientific review, university teaching, applied cryptography, and technical writing.
+My background spans mathematical research, scientific review, university teaching, applied cryptography, and technical writing, grounded in doctoral training in mathematics.
 
 I am increasingly interested in documentation not only as a collection of individual documents but as a system for organizing technical knowledge: how large bodies of material are structured, maintained, versioned, reviewed, and made usable by readers with different needs and levels of expertise. That includes distinguishing tutorials, how-to guides, reference material, and explanation, establishing consistent standards, preserving institutional knowledge, and designing documentation so that it remains useful as a project or organization grows.
 
@@ -42,11 +42,11 @@ The source is organized as a modern Python package with a companion command-line
 
 ---
 
-### [Euclid’s Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
+### [Euclid's Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
 
 **An ancient algorithm that still holds mathematical mysteries.**
 
-Euclid’s algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
+Euclid's algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
 
 <p align="center">
   <a href="https://tmfreiberg.github.io/euclids_algorithm_analysis/">
@@ -57,14 +57,16 @@ Euclid’s algorithm is one of the oldest algorithms still in regular use, under
     >
   </a>
     <br>
-  <em>The distribution of Euclid’s algorithm step counts approaching its predicted normal limit as the input range grows.</em>
+  <em>The distribution of Euclid's algorithm step counts approaching its predicted normal limit as the input range grows.</em>
 </p>
 
 This project applies the algorithm to nearly **five billion pairs of integers**, records how many division steps each calculation requires, and compares the resulting distributions with theoretical asymptotic predictions. An animation makes the emerging normal distribution visible as the range of inputs grows.
 
-The investigation also sheds numerical light on a secondary constant in the known variance formula—for which, to my knowledge, no previous numerical estimate or closed-form expression is available. The extensive README functions as an expository mathematical article, integrating historical context, derivations, algorithms, plots, animations, and reproducible numerical evidence.
+The investigation also sheds numerical light on a secondary constant in the known variance formula, one for which, to my knowledge, no previous numerical estimate or closed-form expression exists. The full treatment reads as an expository mathematical article, integrating historical context, derivations, algorithms, plots, animations, and reproducible numerical evidence, with the headline estimate re-derivable from the shipped data in a single step.
 
-**Focus:** algorithm analysis, large-scale computation, computational statistics, SciPy, SQLite, mathematical visualization, long-form technical exposition
+The source is organized as a modern Python package with a companion command-line interface and a test suite, and the article is published to the web as a fully rendered book built automatically from executable sources. The fast computations run live at build time against the package itself, so the exposition and the numbers stay in step with the code.
+
+**Focus:** algorithm analysis, computational statistics, large-scale computation, numerical estimation, NumPy / SciPy, Quarto / executable documents, Python packaging, CLI design, mathematical visualization, long-form technical exposition
 
 ---
 

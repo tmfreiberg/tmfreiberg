@@ -70,14 +70,14 @@ The source is organized as a modern Python package with a companion command-line
 
 ---
 
-### [Primes in Intervals](https://github.com/tmfreiberg/primes_in_intervals)
+### [Primes in Intervals](https://tmfreiberg.github.io/primes_in_intervals/)
 
 **Testing competing theories about how prime numbers are distributed.**
 
-Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes—and which mathematical model best predicts the observed distribution?
+Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes, and which mathematical model best predicts the observed distribution?
 
 <p align="center">
-  <a href="https://github.com/tmfreiberg/primes_in_intervals">
+  <a href="https://tmfreiberg.github.io/primes_in_intervals/">
     <img
       src="assets/primes_in_intervals.gif"
       alt="Animated empirical distribution of prime counts in short intervals"
@@ -88,13 +88,13 @@ Prime numbers appear irregular, but their irregularity has structure. This proje
   <em>Empirical prime-count distributions evolving across larger numerical ranges.</em>
 </p>
 
-The code supports several different ways of sampling intervals, including disjoint intervals, overlapping sliding intervals, and intervals beginning at primes. A custom postponed sieve generates primes without allocating a large fixed array, while sliding-window updates avoid repeating expensive calculations. Results are stored in SQLite so long-running computations can be extended across sessions.
+The code supports several different ways of sampling intervals, including disjoint intervals, overlapping sliding intervals, and intervals beginning at primes. A custom postponed sieve generates primes without allocating a large fixed array, while sliding-window updates avoid repeating expensive calculations, so counting every overlapping interval costs about twice a disjoint count rather than a hundred times as much. Results are stored in SQLite so computations that run for hours are paid for once and can be extended across sessions.
 
-The empirical distributions are compared with predictions from the Cramér model, the Hardy–Littlewood prime $k$-tuples conjecture, and the more refined Montgomery–Soundararajan model. Plots, tables, and animations show how the distributions change as the interval length and numerical range vary.
+The standard probabilistic model, due to Cramér, treats each integer near a large $N$ as prime with independent probability $1/\log N$, which predicts a binomial distribution. The measured distributions are consistently narrower than that. The project tests Cramér's prediction against two refinements from [my own published work](https://doi.org/10.1007/978-3-319-92777-0_2), which add correction terms derived from the Hardy-Littlewood prime tuples conjecture and a sharp estimate of Montgomery and Soundararajan. Plots, tables, and animations show how the fit changes as the interval length and the numerical range vary.
 
-The repository combines approximately 2,400 lines of Python with a substantial README and an extended examples guide that functions as a working textbook. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
+The repository is about 4,800 lines of Python across eleven modules, with a 163-test suite, a command-line interface exposing every function to the shell, and continuous integration. The exposition is a ten-chapter book that executes the package as it renders, so every number, table, and figure on the site is produced by the code rather than pasted in. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
 
-**Focus:** analytic number theory, reusable algorithm design, custom prime generation, statistical model comparison, SQLite, animation, technical documentation
+**Focus:** analytic number theory, reusable algorithm design, custom prime generation, statistical model comparison, SQLite, Python packaging, testing and CI, technical documentation
 
 ---
 

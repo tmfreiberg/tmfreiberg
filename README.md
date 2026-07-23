@@ -72,9 +72,10 @@ The source is organized as a modern Python package with a companion command-line
 
 ### [Primes in Intervals](https://tmfreiberg.github.io/primes_in_intervals/)
 
-**Testing competing theories about how prime numbers are distributed.**
+**Testing a refinement of the standard probabilistic model for prime numbers.**
 
-Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes, and which mathematical model best predicts the observed distribution?
+Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes, and how closely does theory predict the answer?
+
 
 <p align="center">
   <a href="https://tmfreiberg.github.io/primes_in_intervals/">

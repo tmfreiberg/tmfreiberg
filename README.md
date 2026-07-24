@@ -2,7 +2,7 @@
 
 **Mathematician and technical communicator working across software correctness, system validation, scientific computing, and technical documentation.**
 
-[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · Research papers: [MathSciNet](https://mathscinet.ams.org/mathscinet/MRAuthorID/895400); [arXiv](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T) · [Mathematics Genealogy Project](https://www.genealogy.math.ndsu.nodak.edu/id.php?id=160180) · Montréal, Canada
+[LinkedIn](https://www.linkedin.com/in/tmfreiberg/) · [Publications](https://mathscinet.ams.org/mathscinet/MRAuthorID/895400) · [Preprints](https://arxiv.org/search/math?searchtype=author&query=Freiberg,+T) · [Mathematics Genealogy Project](https://www.genealogy.math.ndsu.nodak.edu/id.php?id=160180)
 
 My background spans mathematical research, scientific review, university teaching, applied cryptography, and technical writing, grounded in doctoral training in mathematics.
 

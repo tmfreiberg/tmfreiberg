@@ -117,19 +117,21 @@ Parameters remain synchronized across the application, and users can save and re
 
 ---
 
-### [Medical Image Classification](https://github.com/tmfreiberg/HAM10000-skin-lesion-classification)
+### [Human Against Machine: Skin Lesion Classification](https://tmfreiberg.github.io/human-against-machine/)
 
-**A configurable deep-learning pipeline for classifying dermatoscopic images.**
+**A configurable deep-learning pipeline for classifying dermatoscopic images, with a browser demo that runs the model client-side.**
 
-This project was selected as one of the top projects from the Erdős Institute’s Spring 2024 Deep Learning Boot Camp cohort. It uses the HAM10000 dataset of dermatoscopic images to investigate binary and multiclass skin-lesion classification with fine-tuned ResNet-18 and EfficientNet-B0 models.
+This began as a team project at the Erdős Institute's Spring 2024 Deep Learning Boot Camp and has since been rebuilt from scratch as an installable Python package. It uses the HAM10000 dataset to investigate binary and multiclass skin-lesion classification with fine-tuned ResNet-18 models.
 
-The main technical challenge was not merely training a neural network. The dataset is strongly imbalanced, contains multiple images of some lesions, and includes visual artifacts that a model could learn as misleading shortcuts. The preprocessing pipeline therefore operates at the lesion level to prevent train–test leakage and supports configurable class mappings, balancing strategies, augmentation methods, and transfer-learning choices.
+The interesting problems were not in training the network. The dataset is strongly imbalanced, photographs many lesions more than once, and carries acquisition artifacts a model can learn as shortcuts. Splitting therefore happens at the lesion level so that near-duplicate images cannot straddle the train/validation boundary, and the guarantee is asserted in tests rather than assumed. Experiments are defined in YAML and identified by a hash of the configuration, so a run directory names exactly one set of settings and records them alongside its artifacts.
 
-Evaluation uses balanced accuracy, per-class recall, confusion matrices, and threshold analysis rather than relying on raw accuracy. A Streamlit application presents the work as a human-versus-model challenge, allowing users to classify held-out images and compare their results with the trained model.
+Evaluation reports balanced accuracy against its chance level, per-class recall with support, confusion matrices, and two competing decision rules for melanoma, rather than leaning on raw accuracy. The seven-class model reaches 0.69 balanced accuracy where guessing scores 0.14, and the write-up leads with what that means clinically: it misses about two melanomas in five.
+
+The accompanying book explains every design decision and its limitations, and the challenge page lets you attempt the same task against the model, with a quantised ONNX network running entirely in your browser.
 
 This is an educational machine-learning project, not a clinical diagnostic system.
 
-**Focus:** PyTorch, transfer learning, computer vision, leakage prevention, class imbalance, experimental design, model evaluation, Streamlit
+**Focus:** PyTorch, ONNX, transfer learning, computer vision, leakage prevention, class imbalance, experimental design, model evaluation, testing, CI/CD, Quarto
 
 ---
 

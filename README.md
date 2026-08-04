@@ -135,19 +135,21 @@ This is an educational machine-learning project, not a clinical diagnostic syste
 
 ---
 
-### [Towards Vision Zero](https://github.com/tmfreiberg/road-safety)
+### [Towards Vision Zero](https://tmfreiberg.github.io/towards-vision-zero/)
 
-**A road-safety project whose most important result was recognizing the limits of its own model.**
+**A road-safety project whose most important result was establishing what its data could not support.**
 
-This Erdős Institute data science project analyzes Quebec traffic accident records from 2011 through 2022. The codebase includes multi-year data ingestion, bilingual data dictionaries, feature engineering, exploratory analysis tools, XGBoost classification, custom confusion matrices, weighted evaluation metrics, and threshold adjustment for the asymmetric costs of different prediction errors.
+This project analyzes 1.7 million Quebec traffic collision records from 2011 through 2022. The codebase includes multi-year data ingestion, a bilingual machine-readable data dictionary, feature engineering, XGBoost and four other estimator families under identical conditions, per-class evaluation with Matthews correlation, information-theoretic bounds on achievable performance, permutation tests, an interactive explorer over the full dataset, and a Quarto book that regenerates every figure from source.
 
-The original goal was to predict whether an accident would result in property damage, minor injury, or serious injury or death. The resulting model was useful for aggregate analysis but not reliable enough to justify confident predictions about individual accidents.
+The original goal was to predict whether a collision would result in property damage, minor injury, or serious injury or death. The model reaches a Matthews correlation of 0.44 on held-out records, which in most settings would indicate something that worked. On the same records it predicted a serious collision seven times out of forty-one thousand, and was right once.
 
-I therefore reframed the project around a more defensible question. Instead of presenting a single model prediction as an answer, the retrospective analysis module finds historical accidents matching a user’s selected conditions and shows the distribution of outcomes among those comparable records.
+Rather than report the first number and omit the second, I set out to establish whether any model could do better. Four independent arguments say no: collisions recorded identically on all eighteen variables frequently turn out differently; the information the features carry puts a floor under the error rate; five estimator families land in the same place; and a learning curve that flattens says more records of the same kind would not help. The variables a city actually controls — road configuration, surface, lighting, posted speed — add almost nothing once you know who was involved.
 
-That pivot is the most important feature of the project: the purpose of analysis is not to force a model into a predetermined use case, but to understand what the available data can—and cannot—honestly support.
+I therefore reframed the project around a question the data can answer. The interactive explorer finds historical collisions matching a user's selected conditions and shows the distribution of outcomes among those comparable records. No model, no threshold, no prediction: it counts.
 
-**Focus:** public-data engineering, XGBoost, model evaluation, asymmetric error costs, bilingual documentation, retrospective analysis, analytical judgment
+That pivot is the most important feature of the project. There is a difference between reporting that a model is not good enough and establishing that no model could be, and the second is checkable. Knowing which one you face is worth more than another round of tuning.
+
+**Focus:** public-data engineering, XGBoost, model evaluation, information theory, Bayes-error estimation, permutation testing, held-out discipline, bilingual documentation, Quarto, analytical judgment
 
 ## Research publications
 

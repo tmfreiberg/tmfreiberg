@@ -74,6 +74,18 @@ The accompanying book explains every design decision and its limitations, and th
 
 This is an educational machine-learning project, not a clinical diagnostic system.
 
+<p align="center">
+  <a href="https://tmfreiberg.github.io/human-against-machine/">
+    <img
+      src="assets/human_against_machine.gif"
+      alt="The challenge page: a dermatoscopic image from the HAM10000 dataset is shown, the user picks a diagnosis, and the page reveals the true label alongside the model's prediction and a running tally"
+      width="500"
+    >
+  </a>
+  <br>
+  <em>The challenge page: dermatoscopic images from HAM10000, your guess against the model's, scored as you go. The network runs entirely in your browser.</em>
+</p>
+
 **Focus:** PyTorch, ONNX, transfer learning, computer vision, leakage prevention, class imbalance, experimental design, model evaluation, testing, CI/CD, Quarto
 
 ---

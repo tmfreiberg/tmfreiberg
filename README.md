@@ -84,6 +84,18 @@ This is an educational machine-learning project, not a clinical diagnostic syste
 
 This project analyzes 1.7 million Quebec traffic collision records from 2011 through 2022. The codebase includes multi-year data ingestion, a bilingual machine-readable data dictionary, feature engineering, XGBoost and four other estimator families under identical conditions, per-class evaluation with Matthews correlation, information-theoretic bounds on achievable performance, permutation tests, an interactive explorer over the full dataset, and a Quarto book that regenerates every figure from source.
 
+<p align="center">
+  <a href="https://tmfreiberg.github.io/towards-vision-zero/">
+    <img
+      src="assets/towards_vision_zero.gif"
+      alt="Interactive explorer filtering 1.7 million Quebec collision records by road and vehicle conditions, showing the distribution of actual outcomes among matching historical collisions"
+      width="500"
+    >
+  </a>
+  <br>
+  <em>The retrospective explorer: choose a set of conditions and it reports how comparable historical collisions actually turned out — counts, not predictions.</em>
+</p>
+
 The original goal was to predict whether a collision would result in property damage, minor injury, or serious injury or death. The model reaches a Matthews correlation of 0.44 on held-out records, which in most settings would indicate something that worked. On the same records it predicted a serious collision seven times out of forty-one thousand, and was right once.
 
 Rather than report the first number and omit the second, I set out to establish whether any model could do better. Four independent arguments say no: collisions recorded identically on all eighteen variables frequently turn out differently; the information the features carry puts a floor under the error rate; five estimator families land in the same place; and a learning curve that flattens says more records of the same kind would not help. The variables a city actually controls — road configuration, surface, lighting, posted speed — add almost nothing once you know who was involved.

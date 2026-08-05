@@ -12,9 +12,27 @@ This interest grows naturally from a long-standing habit of careful record-keepi
 
 My projects often begin with an abstract mathematical or analytical question, but they rarely end with a bare computation. I tend to build **inspectable systems** around the underlying idea: executable examples, interactive interfaces, visualizations, persistent data, and documentation intended for readers other than myself.
 
-The projects below range from interactive-proof protocols and computational number theory to quantitative finance, medical imaging, and road-safety data.
-
 ## Selected projects
+
+**[Sum-check and GKR](#sum-check-and-gkr)** — Two foundational verifiable-computation protocols, made executable and teachable. An interactive book where you can play the prover or the verifier and watch a dishonest prover get caught.
+*Verifiable computation · Python packaging · executable documents · pedagogical software*
+
+**[Human Against Machine](#human-against-machine-skin-lesion-classification)** — A configurable deep-learning pipeline for skin-lesion classification, with a browser demo that runs the model client-side. The evaluation leads with what the model misses rather than what it gets right.
+*PyTorch · ONNX · computer vision · leakage prevention · model evaluation · CI/CD*
+
+**[Towards Vision Zero](#towards-vision-zero)** — 1.7 million Quebec collision records, and four independent arguments that no model could predict individual outcomes from them. Reframed around a question the data can actually answer.
+*Public-data engineering · XGBoost · information theory · Bayes-error estimation · analytical judgment*
+
+**[Primes in Intervals](#primes-in-intervals)** — Tests a conjectural refinement of the standard probabilistic model for primes at scale, including a secondary term from my own published work. A ten-chapter book that executes the package as it renders.
+*Analytic number theory · custom prime generation · SQLite · testing and CI*
+
+**[Euclid's Algorithm Analysis](#euclids-algorithm-analysis)** — Nearly five billion integer pairs, watching the step-count distribution converge to normal, plus a numerical estimate of a constant with no known closed form.
+*Algorithm analysis · computational statistics · large-scale computation · NumPy / SciPy*
+
+**[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — An interactive dashboard for European option pricing: premium heatmaps, implied volatility by numerical root-finding, saved surfaces in a relational database. The earliest project here, and where the pattern started.
+*Quantitative finance · numerical root-finding · Streamlit · SQLite*
+
+---
 
 ### [Sum-check and GKR](https://tmfreiberg.github.io/sumcheck-gkr-notes/)
 
@@ -39,81 +57,6 @@ This project turns their mathematics into a **[fully rendered, interactive book]
 The source is organized as a modern Python package with a companion command-line interface, published to the web from Markdown sources through an automated build. Following Justin Thaler's *Proofs, Arguments, and Zero-Knowledge*, the treatment supplements his presentation with additional background, complete proofs of the underlying lemmas, and executable examples. Both the sum-check and GKR protocols are covered in full, including a proof of the GKR soundness-error bound checked against a Monte Carlo simulation over a deliberately small field.
 
 **Focus:** verifiable computation, mathematical exposition, MyST / executable documents, Python packaging, CLI design, Graphviz, pedagogical software design
-
----
-
-### [Euclid's Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
-
-**An ancient algorithm that still holds mathematical mysteries.**
-
-Euclid's algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
-
-<p align="center">
-  <a href="https://tmfreiberg.github.io/euclids_algorithm_analysis/">
-    <img
-      src="assets/euclids_algorithm.gif"
-      alt="Animated distribution of the number of steps in Euclid's algorithm"
-      width="400"
-    >
-  </a>
-    <br>
-  <em>The distribution of Euclid's algorithm step counts approaching its predicted normal limit as the input range grows.</em>
-</p>
-
-This project applies the algorithm to nearly **five billion pairs of integers**, records how many division steps each calculation requires, and compares the resulting distributions with theoretical asymptotic predictions. An animation makes the emerging normal distribution visible as the range of inputs grows.
-
-The investigation also sheds numerical light on a secondary constant in the known variance formula, one for which, to my knowledge, no previous numerical estimate or closed-form expression exists. The full treatment reads as an expository mathematical article, integrating historical context, derivations, algorithms, plots, animations, and reproducible numerical evidence, with the headline estimate re-derivable from the shipped data in a single step.
-
-The source is organized as a modern Python package with a companion command-line interface and a test suite, and the article is published to the web as a fully rendered book built automatically from executable sources. The fast computations run live at build time against the package itself, so the exposition and the numbers stay in step with the code.
-
-**Focus:** algorithm analysis, computational statistics, large-scale computation, numerical estimation, NumPy / SciPy, Quarto / executable documents, Python packaging, CLI design, mathematical visualization, long-form technical exposition
-
----
-
-### [Primes in Intervals](https://tmfreiberg.github.io/primes_in_intervals/)
-
-**Testing a refinement of the standard probabilistic model for prime numbers.**
-
-Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes, and how closely does theory predict the answer?
-
-
-<p align="center">
-  <a href="https://tmfreiberg.github.io/primes_in_intervals/">
-    <img
-      src="assets/primes_in_intervals.gif"
-      alt="Animated empirical distribution of prime counts in short intervals"
-      width="400"
-    >
-  </a>
-  <br>
-  <em>Empirical prime-count distributions evolving across larger numerical ranges.</em>
-</p>
-
-The code supports several different ways of sampling intervals, including disjoint intervals, overlapping sliding intervals, and intervals beginning at primes. A custom postponed sieve generates primes without allocating a large fixed array, while sliding-window updates avoid repeating expensive calculations, so counting every overlapping interval costs about twice a disjoint count rather than a hundred times as much. Results are stored in SQLite so computations that run for hours are paid for once and can be extended across sessions.
-
-Near a large number $N$, primes thin out to an average spacing of $\log N$. Cramér's model treats them as scattered at random with that density, which predicts that the number of primes in an interval of comparable length follows a Poisson distribution. Gallagher showed the prediction follows from the Hardy-Littlewood prime tuples conjecture, but as an asymptotic main term only, with nothing said about the error. [My published work](https://doi.org/10.1007/978-3-319-92777-0_2) conjectures a secondary term, conditional on the prime tuples conjecture and on uniformity assumptions in an estimate of Montgomery and Soundararajan that have not been established. This project measures the counts at scale and tests the prediction against them, with plots, tables, and animations showing how the fit changes as the interval length and the numerical range vary.
-
-The repository is about 4,800 lines of Python across eleven modules, with a 163-test suite, a command-line interface exposing every function to the shell, and continuous integration. The exposition is a ten-chapter book that executes the package as it renders, so every number, table, and figure on the site is produced by the code rather than pasted in. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
-
-**Focus:** analytic number theory, reusable algorithm design, custom prime generation, statistical model comparison, SQLite, Python packaging, testing and CI, technical documentation
-
----
-
-### [Black–Scholes Option Pricer](https://github.com/tmfreiberg/black-scholes-option-pricer)
-
-**Turning a mathematical pricing formula into an interactive analytical tool.**
-
-Rather than stopping at the closed-form Black–Scholes formula, this project builds an interactive Streamlit dashboard for exploring how a European option’s value changes with market assumptions.
-
-The application offers three connected views:
-
-* a heatmap showing the effect of spot price and volatility on the option premium;
-* an implied-volatility tool that solves the inverse pricing problem numerically;
-* premium curves showing how option value changes with spot price and time to maturity.
-
-Parameters remain synchronized across the application, and users can save and reload calculated surfaces through a relational SQLite database. The project was an early exploration of quantitative finance and established a pattern that recurs in my later work: take a mathematical model, make its behavior visible, and give the reader a way to interact with it.
-
-**Focus:** quantitative finance, numerical root-finding, Streamlit, NumPy, SciPy, pandas, matplotlib, SQLite
 
 ---
 
@@ -150,6 +93,83 @@ I therefore reframed the project around a question the data can answer. The inte
 That pivot is the most important feature of the project. There is a difference between reporting that a model is not good enough and establishing that no model could be, and the second is checkable. Knowing which one you face is worth more than another round of tuning.
 
 **Focus:** public-data engineering, XGBoost, model evaluation, information theory, Bayes-error estimation, permutation testing, held-out discipline, bilingual documentation, Quarto, analytical judgment
+
+---
+
+### [Primes in Intervals](https://tmfreiberg.github.io/primes_in_intervals/)
+
+**Testing a refinement of the standard probabilistic model for prime numbers.**
+
+Prime numbers appear irregular, but their irregularity has structure. This project asks a concrete statistical question: how often does a short interval contain exactly zero, one, two, or more primes, and how closely does theory predict the answer?
+
+
+<p align="center">
+  <a href="https://tmfreiberg.github.io/primes_in_intervals/">
+    <img
+      src="assets/primes_in_intervals.gif"
+      alt="Animated empirical distribution of prime counts in short intervals"
+      width="400"
+    >
+  </a>
+  <br>
+  <em>Empirical prime-count distributions evolving across larger numerical ranges.</em>
+</p>
+
+The code supports several different ways of sampling intervals, including disjoint intervals, overlapping sliding intervals, and intervals beginning at primes. A custom postponed sieve generates primes without allocating a large fixed array, while sliding-window updates avoid repeating expensive calculations, so counting every overlapping interval costs about twice a disjoint count rather than a hundred times as much. Results are stored in SQLite so computations that run for hours are paid for once and can be extended across sessions.
+
+Near a large number $N$, primes thin out to an average spacing of $\log N$. Cramér's model treats them as scattered at random with that density, which predicts that the number of primes in an interval of comparable length follows a Poisson distribution. Gallagher showed the prediction follows from the Hardy-Littlewood prime tuples conjecture, but as an asymptotic main term only, with nothing said about the error. [My published work](https://doi.org/10.1007/978-3-319-92777-0_2) conjectures a secondary term, conditional on the prime tuples conjecture and on uniformity assumptions in an estimate of Montgomery and Soundararajan that have not been established. This project measures the counts at scale and tests the prediction against them, with plots, tables, and animations showing how the fit changes as the interval length and the numerical range vary.
+
+The repository is about 4,800 lines of Python across eleven modules, with a 163-test suite, a command-line interface exposing every function to the shell, and continuous integration. The exposition is a ten-chapter book that executes the package as it renders, so every number, table, and figure on the site is produced by the code rather than pasted in. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
+
+**Focus:** analytic number theory, reusable algorithm design, custom prime generation, statistical model comparison, SQLite, Python packaging, testing and CI, technical documentation
+
+---
+
+### [Euclid's Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
+
+**An ancient algorithm that still holds mathematical mysteries.**
+
+Euclid's algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
+
+<p align="center">
+  <a href="https://tmfreiberg.github.io/euclids_algorithm_analysis/">
+    <img
+      src="assets/euclids_algorithm.gif"
+      alt="Animated distribution of the number of steps in Euclid's algorithm"
+      width="400"
+    >
+  </a>
+    <br>
+  <em>The distribution of Euclid's algorithm step counts approaching its predicted normal limit as the input range grows.</em>
+</p>
+
+This project applies the algorithm to nearly **five billion pairs of integers**, records how many division steps each calculation requires, and compares the resulting distributions with theoretical asymptotic predictions. An animation makes the emerging normal distribution visible as the range of inputs grows.
+
+The investigation also sheds numerical light on a secondary constant in the known variance formula, one for which, to my knowledge, no previous numerical estimate or closed-form expression exists. The full treatment reads as an expository mathematical article, integrating historical context, derivations, algorithms, plots, animations, and reproducible numerical evidence, with the headline estimate re-derivable from the shipped data in a single step.
+
+The source is organized as a modern Python package with a companion command-line interface and a test suite, and the article is published to the web as a fully rendered book built automatically from executable sources. The fast computations run live at build time against the package itself, so the exposition and the numbers stay in step with the code.
+
+**Focus:** algorithm analysis, computational statistics, large-scale computation, numerical estimation, NumPy / SciPy, Quarto / executable documents, Python packaging, CLI design, mathematical visualization, long-form technical exposition
+
+---
+
+### [Black–Scholes Option Pricer](https://github.com/tmfreiberg/black-scholes-option-pricer)
+
+**Turning a mathematical pricing formula into an interactive analytical tool.**
+
+Rather than stopping at the closed-form Black–Scholes formula, this project builds an interactive Streamlit dashboard for exploring how a European option’s value changes with market assumptions.
+
+The application offers three connected views:
+
+* a heatmap showing the effect of spot price and volatility on the option premium;
+* an implied-volatility tool that solves the inverse pricing problem numerically;
+* premium curves showing how option value changes with spot price and time to maturity.
+
+Parameters remain synchronized across the application, and users can save and reload calculated surfaces through a relational SQLite database. The project was an early exploration of quantitative finance and established a pattern that recurs in my later work: take a mathematical model, make its behavior visible, and give the reader a way to interact with it.
+
+**Focus:** quantitative finance, numerical root-finding, Streamlit, NumPy, SciPy, pandas, matplotlib, SQLite
+
+---
 
 ## Research publications
 

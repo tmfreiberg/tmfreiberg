@@ -29,8 +29,8 @@ My projects often begin with an abstract mathematical or analytical question, bu
 **[Euclid's Algorithm Analysis](#euclids-algorithm-analysis)** — Nearly five billion integer pairs, watching the step-count distribution converge to normal, plus a numerical estimate of a constant with no known closed form.
 *Algorithm analysis · computational statistics · large-scale computation · NumPy / SciPy*
 
-**[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — An interactive dashboard for European option pricing: premium heatmaps, implied volatility by numerical root-finding, saved surfaces in a relational database. The earliest project here, and where the pattern started.
-*Quantitative finance · numerical root-finding · Streamlit · SQLite*
+**[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — A typed, tested option-pricing package whose published document runs the code in your browser. It closes by generating prices from a process the formula gets wrong and watching a volatility smile appear where the theory says there should be none.
+*Quantitative finance · numerical methods · property-based testing · in-browser execution · PyPI*
 
 ---
 
@@ -177,21 +177,31 @@ The source is organized as a modern Python package with a companion command-line
 
 ---
 
-### [Black–Scholes Option Pricer](https://github.com/tmfreiberg/black-scholes-option-pricer)
+### [Black-Scholes Option Pricer](https://tmfreiberg.github.io/black-scholes-option-pricer/)
 
-**Turning a mathematical pricing formula into an interactive analytical tool.**
+**Turning a pricing formula into an inspectable system, and then showing where the formula fails.**
 
-Rather than stopping at the closed-form Black–Scholes formula, this project builds an interactive Streamlit dashboard for exploring how a European option’s value changes with market assumptions.
+Black-Scholes gives a closed-form value for a European option. This project builds the library around it, covering prices, the five Greeks, no-arbitrage bounds, implied volatility, and sensitivity surfaces, and then publishes a document whose code cells run that library in the reader's browser. Nothing is precomputed and nothing is sent to a server: the page installs the released package into a Python runtime compiled to WebAssembly, and the code shown is the code the tests run.
 
-The application offers three connected views:
+<p align="center">
+  <a href="https://tmfreiberg.github.io/black-scholes-option-pricer/">
+    <img
+      src="assets/smile.png"
+      alt="Black-Scholes implied volatility against strike for prices generated three ways"
+      width="500"
+    >
+  </a>
+  <br>
+  <em>Implied volatility against strike. The flat line is the control: with no jumps, the generating model is Black–Scholes and the inversion returns the input exactly.</em>
+</p>
 
-* a heatmap showing the effect of spot price and volatility on the option premium;
-* an implied-volatility tool that solves the inverse pricing problem numerically;
-* premium curves showing how option value changes with spot price and time to maturity.
+The closing section is the reason the project exists in its current form. Implied volatility is *defined* by inverting Black-Scholes at an observed price, so if the model were correct, every option on one underlying at one expiry would imply the same volatility. Real markets disagree, and the document demonstrates the mechanism rather than asserting it: prices are generated under a jump-diffusion process, whose returns are not lognormal, then read back through Black-Scholes. The implied volatilities vary with strike, and the shape encodes *which way* the true distribution departs from the assumed one. The control case carries the argument, because with the jumps switched off the same pipeline returns a flat line, so a curve elsewhere cannot be an artifact of the solver.
 
-Parameters remain synchronized across the application, and users can save and reload calculated surfaces through a relational SQLite database. The project was an early exploration of quantitative finance and established a pattern that recurs in my later work: take a mathematical model, make its behavior visible, and give the reader a way to interact with it.
+That argument only works if the numbers are trustworthy, so the verification is the substance. The package carries no SciPy at runtime: the normal distribution function and the root-finder are implemented directly, which is what keeps the wheel small enough to load into a browser, and which creates the obligation to prove them right. They are checked against independent oracles, namely the standard library, SciPy, and a 50-digit reference implementation, at tolerances tighter than either library's own defaults. Every Greek is checked against a finite difference of the price function it claims to differentiate. Accuracy bounds are asserted to be *tight* rather than merely satisfied, so the stated error is a measurement rather than a comfortable margin.
 
-**Focus:** quantitative finance, numerical root-finding, Streamlit, NumPy, SciPy, pandas, matplotlib, SQLite
+Property-based testing and a multi-version test matrix found defects that example-based tests would not have: an overflow triggered only by subnormal volatility, two floating-point underflows in the root-finder that appear when inverting deep out-of-the-money prices, and a resource leak visible on one Python version and not another. The suite is 282 tests at 100% branch coverage, with every docstring example executed so that documentation cannot drift from behavior. The package is published to PyPI, released through an automated workflow that runs the full gate before uploading, and the document refuses to deploy if its pinned version is not actually available.
+
+**Focus:** quantitative finance, numerical methods, property-based testing, floating-point correctness, Python packaging, PyPI release automation, Pyodide / WebAssembly, Quarto / executable documents, CI/CD, SQLite
 
 ---
 

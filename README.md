@@ -120,7 +120,7 @@ That pivot is the most important feature of the project. There is a difference b
 
 ---
 
-### [Primes in Intervals](https://tmfreiberg.github.io/primes_in_intervals/)
+### [Primes in Intervals](https://tmfreiberg.github.io/primes-in-intervals/)
 
 **Testing a refinement of the standard probabilistic model for prime numbers.**
 
@@ -128,7 +128,7 @@ Prime numbers appear irregular, but their irregularity has structure. This proje
 
 
 <p align="center">
-  <a href="https://tmfreiberg.github.io/primes_in_intervals/">
+  <a href="https://tmfreiberg.github.io/primes-in-intervals/">
     <img
       src="assets/primes_in_intervals.gif"
       alt="Animated empirical distribution of prime counts in short intervals"
@@ -149,14 +149,14 @@ The repository is about 4,800 lines of Python across eleven modules, with a 163-
 
 ---
 
-### [Euclid's Algorithm Analysis](https://tmfreiberg.github.io/euclids_algorithm_analysis/)
+### [Euclid's Algorithm Analysis](https://tmfreiberg.github.io/euclids-algorithm-analysis/)
 
 **An ancient algorithm that still holds mathematical mysteries.**
 
 Euclid's algorithm is one of the oldest algorithms still in regular use, underlying modern work in number theory, computer algebra, and cryptography. Its basic operation is elementary, but the statistical behavior of its running time remains surprisingly subtle.
 
 <p align="center">
-  <a href="https://tmfreiberg.github.io/euclids_algorithm_analysis/">
+  <a href="https://tmfreiberg.github.io/euclids-algorithm-analysis/">
     <img
       src="assets/euclids_algorithm.gif"
       alt="Animated distribution of the number of steps in Euclid's algorithm"

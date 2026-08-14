@@ -32,7 +32,7 @@ My projects often begin with an abstract mathematical or analytical question, bu
 **[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — A typed, tested option-pricing package whose published document runs the code in your browser. It closes by generating prices from a process the formula gets wrong and watching a volatility smile appear where the theory says there should be none.
 *Quantitative finance · numerical methods · property-based testing · in-browser execution · PyPI*
 
-**[bash-odyssey](#bash-odyssey)** — A tutorial for the Unix command line in which the filesystem is the document. Thirteen episodes of the *Odyssey* as a directory tree: when the Cyclops asks Odysseus his name, you rename a file.
+**[Bash Odyssey](#bash-odyssey)** — A tutorial for the Unix command line in which the filesystem is the document. Thirteen episodes of the *Odyssey* as a directory tree: when the Cyclops asks Odysseus his name, you rename a file.
 *Technical documentation · learning design · Unix/Linux · shell scripting · cross-platform verification*
 
 ---
@@ -206,7 +206,7 @@ Property-based testing and a multi-version test matrix found defects that exampl
 
 **Focus:** quantitative finance, numerical methods, property-based testing, floating-point correctness, Python packaging, PyPI release automation, Pyodide / WebAssembly, Quarto / executable documents, CI/CD, SQLite
 
-### [bash-odyssey](https://github.com/tmfreiberg/bash-odyssey)
+### [Bash Odyssey](https://github.com/tmfreiberg/bash-odyssey)
 
 **A tutorial for the Unix command line in which the filesystem is the document.**
 

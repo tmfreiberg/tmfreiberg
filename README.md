@@ -32,6 +32,9 @@ My projects often begin with an abstract mathematical or analytical question, bu
 **[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — A typed, tested option-pricing package whose published document runs the code in your browser. It closes by generating prices from a process the formula gets wrong and watching a volatility smile appear where the theory says there should be none.
 *Quantitative finance · numerical methods · property-based testing · in-browser execution · PyPI*
 
+**[bash-odyssey](#bash-odyssey)** — A tutorial for the Unix command line in which the filesystem is the document. Thirteen episodes of the *Odyssey* as a directory tree: when the Cyclops asks Odysseus his name, you rename a file.
+*Technical documentation · learning design · Unix/Linux · shell scripting · cross-platform verification*
+
 ---
 
 ### [Sum-check and GKR](https://tmfreiberg.github.io/sumcheck-gkr-notes/)
@@ -202,6 +205,22 @@ That argument only works if the numbers are trustworthy, so the verification is 
 Property-based testing and a multi-version test matrix found defects that example-based tests would not have: an overflow triggered only by subnormal volatility, two floating-point underflows in the root-finder that appear when inverting deep out-of-the-money prices, and a resource leak visible on one Python version and not another. The suite is 282 tests at 100% branch coverage, with every docstring example executed so that documentation cannot drift from behavior. The package is published to PyPI, released through an automated workflow that runs the full gate before uploading, and the document refuses to deploy if its pinned version is not actually available.
 
 **Focus:** quantitative finance, numerical methods, property-based testing, floating-point correctness, Python packaging, PyPI release automation, Pyodide / WebAssembly, Quarto / executable documents, CI/CD, SQLite
+
+### [bash-odyssey](https://github.com/tmfreiberg/bash-odyssey)
+
+**A tutorial for the Unix command line in which the filesystem is the document.**
+
+Most command-line tutorials are a list of commands with example output. The reader types `rm file.txt`, sees that a file disappeared, and learns nothing they will remember a week later. The problem is not the explanation. It is that nothing was at stake.
+
+This project is a thirteen-episode retelling of the *Odyssey* laid out as a directory tree, played entirely with real shell commands. There is no game engine, no runtime, no custom vocabulary to unlearn afterwards. A ninety-line shell script copies the story into a working directory; everything after that is the reader, a terminal, and the tools they are being taught.
+
+The design constraint throughout is that the command must *be* the action rather than illustrate it. When the Cyclops asks Odysseus his name, the reader renames a file, and the trick that saves him in Homer is the same `mv` that saves them. When six men die at Ismarus, the reader chooses which six from a roster of twenty and deletes them, having first read what little the file records about each — one detail apiece, because the narrator never bothered to learn more. `rm` has no undo, and the file says so at the moment it costs something. Eleven ships are lost in a single `rm -r`. The Sirens' song is six hundred lines long and the reader is tied to a mast, so it can only be searched, not read; the three lines that matter most are disguised as the refrain, so the filter that removes the noise removes them too.
+
+Twenty-six commands are introduced across the thirteen episodes, one new tool per problem, each at the point where the story cannot proceed without it. Reference material is separated from narrative: the episodes never explain syntax, and the twenty-six reference documents never mention the plot. Choices persist as filesystem state, so a decision made in the first episode changes what is available in the third, and the closing move of the game is a recursive `diff` of the player's tree against the original — every file they destroyed, created, or altered, which is to say their particular version of the story, computed rather than asserted.
+
+The engineering is small but the correctness requirements are not, since every instruction in the prose is a claim about what the reader's machine will do. Cross-platform behaviour was verified rather than assumed: `chmod` proved to enforce write permissions under Git Bash on Windows but not read permissions, so the reference document says exactly that and shows the reader how to test it themselves. Consistency across roughly two hundred files — paths, a crew roster that has to survive nine episodes of attrition, timestamps that a plain `cp` would silently flatten — is maintained by scripted audits rather than by rereading.
+
+**Focus:** technical documentation, learning design, progressive disclosure, tutorial versus reference separation, Unix/Linux command line, shell scripting, cross-platform verification, Git Bash, editorial consistency at scale
 
 ---
 

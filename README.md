@@ -71,6 +71,18 @@ Most command-line tutorials are a list of commands with example output. The read
 
 This project is a thirteen-episode retelling of the *Odyssey* laid out as a directory tree, played entirely with real shell commands. There is no game engine, no runtime, no custom vocabulary to unlearn afterwards. A ninety-line shell script copies the story into a working directory; everything after that is the reader, a terminal, and the tools they are being taught.
 
+<p align="center">
+  <a href="https://github.com/tmfreiberg/bash-odyssey">
+    <img
+      src="assets/bash_odyssey.gif"
+      alt="A terminal session: the player moves odysseus.txt out of the ship's crew directory and into the Cyclops cave under the name outis.txt, then later tries to read odysseus.txt and the shell replies: No such file or directory"
+      width="500"
+    >
+  </a>
+  <br>
+  <em>In Homer, Odysseus escapes the Cyclops by giving his name as Nobody, then ruins it by shouting his real name from the ship as he sails away. Here the trick is a rename — and once it is done, the shell itself will not let you make his mistake.</em>
+</p>
+
 The design constraint throughout is that the command must *be* the action rather than illustrate it. When the Cyclops asks Odysseus his name, the reader renames a file, and the trick that saves him in Homer is the same `mv` that saves them. When six men die at Ismarus, the reader chooses which six from a roster of twenty and deletes them, having first read what little the file records about each — one detail apiece, because the narrator never bothered to learn more. `rm` has no undo, and the file says so at the moment it costs something. Eleven ships are lost in a single `rm -r`. The Sirens' song is six hundred lines long and the reader is tied to a mast, so it can only be searched, not read; the three lines that matter most are disguised as the refrain, so the filter that removes the noise removes them too.
 
 Twenty-six commands are introduced across the thirteen episodes, one new tool per problem, each at the point where the story cannot proceed without it. Reference material is separated from narrative: the episodes never explain syntax, and the twenty-six reference documents never mention the plot. Choices persist as filesystem state, so a decision made in the first episode changes what is available in the third, and the closing move of the game is a recursive `diff` of the player's tree against the original — every file they destroyed, created, or altered, which is to say their particular version of the story, computed rather than asserted.

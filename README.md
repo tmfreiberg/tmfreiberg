@@ -26,13 +26,13 @@ My projects often begin with an abstract mathematical or analytical question, bu
 **[Towards Vision Zero](#towards-vision-zero)** — 1.7 million Quebec collision records, and four independent arguments that no model could predict individual outcomes from them. Reframed around a question the data can actually answer.
 *Public-data engineering · XGBoost · information theory · Bayes-error estimation · analytical judgment*
 
-**[Primes in Intervals](#primes-in-intervals)** — Tests a conjectural refinement of the standard probabilistic model for primes at scale, including a secondary term from my own published work. A ten-chapter book that executes the package as it renders.
+**[Primes in Intervals](#primes-in-intervals)** — Tests a conjectural refinement of the standard probabilistic model for primes at scale, including a secondary term from my own research. A book that executes the package as it renders.
 *Analytic number theory · custom prime generation · SQLite · testing and CI*
 
 **[Euclid's Algorithm Analysis](#euclids-algorithm-analysis)** — Nearly five billion integer pairs, watching the step-count distribution converge to normal, plus a numerical estimate of a constant with no known closed form.
 *Algorithm analysis · computational statistics · large-scale computation · NumPy / SciPy*
 
-**[Black–Scholes Option Pricer](#blackscholes-option-pricer)** — A typed, tested option-pricing package whose published document runs the code in your browser. It closes by generating prices from a process the formula gets wrong and watching a volatility smile appear where the theory says there should be none.
+**[Black-Scholes Option Pricer](#black-scholes-option-pricer)** — A typed, tested option-pricing package whose published document runs the code in your browser. It closes by generating prices from a process the formula gets wrong and watching a volatility smile appear where the theory says there should be none.
 *Quantitative finance · numerical methods · property-based testing · in-browser execution · PyPI*
 
 ---
@@ -69,7 +69,7 @@ The source is organized as a modern Python package with a companion command-line
 
 Most command-line tutorials are a list of commands with example output. The reader types `rm file.txt`, sees that a file disappeared, and learns nothing they will remember a week later. The problem is not the explanation. It is that nothing was at stake.
 
-This project is a thirteen-episode retelling of the *Odyssey* laid out as a directory tree, played entirely with real shell commands. There is no game engine, no runtime, no custom vocabulary to unlearn afterwards. A ninety-line shell script copies the story into a working directory; everything after that is the reader, a terminal, and the tools they are being taught.
+This project is a thirteen-episode retelling of the *Odyssey* laid out as a directory tree, played entirely with real shell commands. There is no game engine, no runtime, no custom vocabulary to unlearn afterwards. A short shell script copies the story into a working directory; everything after that is the reader, a terminal, and the tools they are being taught.
 
 <p align="center">
   <a href="https://github.com/tmfreiberg/bash-odyssey">
@@ -174,9 +174,9 @@ Prime numbers appear irregular, but their irregularity has structure. This proje
 
 The code supports several different ways of sampling intervals, including disjoint intervals, overlapping sliding intervals, and intervals beginning at primes. A custom postponed sieve generates primes without allocating a large fixed array, while sliding-window updates avoid repeating expensive calculations, so counting every overlapping interval costs about twice a disjoint count rather than a hundred times as much. Results are stored in SQLite so computations that run for hours are paid for once and can be extended across sessions.
 
-Near a large number $N$, primes thin out to an average spacing of $\log N$. Cramér's model treats them as scattered at random with that density, which predicts that the number of primes in an interval of comparable length follows a Poisson distribution. Gallagher showed the prediction follows from the Hardy-Littlewood prime tuples conjecture, but as an asymptotic main term only, with nothing said about the error. [My published work](https://doi.org/10.1007/978-3-319-92777-0_2) conjectures a secondary term, conditional on the prime tuples conjecture and on uniformity assumptions in an estimate of Montgomery and Soundararajan that have not been established. This project measures the counts at scale and tests the prediction against them, with plots, tables, and animations showing how the fit changes as the interval length and the numerical range vary.
+Near a large number $N$, primes thin out to an average spacing of $\log N$. Cramér's model treats them as scattered at random with that density, which predicts that the number of primes in an interval of comparable length follows a Poisson distribution. Gallagher showed the prediction follows from the Hardy-Littlewood prime tuples conjecture, but as an asymptotic main term only, with nothing said about the error. [My 2018 paper](https://doi.org/10.1007/978-3-319-92777-0_2) conjectures a secondary term, conditional on the prime tuples conjecture and on uniformity assumptions in an estimate of Montgomery and Soundararajan that have not been established, and the prediction tested here is derived in [a 2026 preprint](https://arxiv.org/abs/2609.33692), not yet peer reviewed. This project measures the counts at scale and tests the prediction against them, with plots, tables, and animations showing how the fit changes as the interval length and the numerical range vary.
 
-The repository is about 4,800 lines of Python across eleven modules, with a 163-test suite, a command-line interface exposing every function to the shell, and continuous integration. The exposition is a ten-chapter book that executes the package as it renders, so every number, table, and figure on the site is produced by the code rather than pasted in. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
+The repository is about 7,500 lines of Python across fifteen modules, with over 200 tests, a command-line interface exposing every function to the shell, and continuous integration. The exposition is a book, *Biases in the distribution of primes in intervals*, that executes the package as it renders, so every number, table, and figure on the site is produced by the code rather than pasted in. Among its demonstrations, one line of code reproduces, in about one second, a historical prime-counting table associated with Gauss.
 
 **Focus:** analytic number theory, reusable algorithm design, custom prime generation, statistical model comparison, SQLite, Python packaging, testing and CI, technical documentation
 
@@ -225,7 +225,7 @@ Black-Scholes gives a closed-form value for a European option. This project buil
     >
   </a>
   <br>
-  <em>Implied volatility against strike. The flat line is the control: with no jumps, the generating model is Black–Scholes and the inversion returns the input exactly.</em>
+  <em>Implied volatility against strike. The flat line is the control: with no jumps, the generating model is Black-Scholes and the inversion returns the input exactly.</em>
 </p>
 
 The closing section is the reason the project exists in its current form. Implied volatility is *defined* by inverting Black-Scholes at an observed price, so if the model were correct, every option on one underlying at one expiry would imply the same volatility. Real markets disagree, and the document demonstrates the mechanism rather than asserting it: prices are generated under a jump-diffusion process, whose returns are not lognormal, then read back through Black-Scholes. The implied volatilities vary with strike, and the shape encodes *which way* the true distribution departs from the assumed one. The control case carries the argument, because with the jumps switched off the same pipeline returns a flat line, so a curve elsewhere cannot be an artifact of the solver.

@@ -1,0 +1,6 @@
+# Normalise text to LF in the repository and on checkout.
+* text=auto eol=lf
+
+# Binary: never diff, never touch line endings.
+*.gif binary
+*.png binary

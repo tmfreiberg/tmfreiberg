@@ -1,0 +1,16 @@
+# ---- Local notes ----
+# A separate local repository, not part of this project.
+/tmfreiberg-private/
+# Backstop: if a note lands here by mistake, git will not take it.
+/handoff.txt
+/backlog.txt
+/backup.txt
+
+# ---- Update zips ----
+# Temporary archives, extracted in place and then deleted.
+/*-update-*.zip
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
